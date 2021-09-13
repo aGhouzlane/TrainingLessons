@@ -24,6 +24,10 @@ namespace Training.Data {
             return "BARK!!!";
         }
 
+        public override string View() {
+            return base.View() + " Some other code.";
+        }
+
         public string DogMethod() {
             return "I am only in dog";
         }

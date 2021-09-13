@@ -1,0 +1,36 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v5.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v5.0": {
+      "FourPillars.Data/1.0.0": {
+        "dependencies": {
+          "FourPillars": "1.0.0"
+        },
+        "runtime": {
+          "FourPillars.Data.dll": {}
+        }
+      },
+      "FourPillars/1.0.0": {
+        "runtime": {
+          "FourPillars.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "FourPillars.Data/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "FourPillars/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

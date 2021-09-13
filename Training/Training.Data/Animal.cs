@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Training.Data {
+    //Sealed keyword stops classes from inhereting from the class
+    //public sealed class Animal
     public abstract class Animal {
         public string Name { get; set; }
         public string Color { get; set; }
@@ -23,7 +25,7 @@ namespace Training.Data {
 
         public abstract string Speak();
 
-        public string View() {
+        public virtual string View() {
             return $"I am a {this.Color} animal.";
         }
 
