@@ -1,0 +1,36 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v5.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v5.0": {
+      "Training/1.0.0": {
+        "dependencies": {
+          "Training.Data": "1.0.0"
+        },
+        "runtime": {
+          "Training.dll": {}
+        }
+      },
+      "Training.Data/1.0.0": {
+        "runtime": {
+          "Training.Data.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Training/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Training.Data/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
