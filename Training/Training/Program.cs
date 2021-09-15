@@ -18,8 +18,8 @@ namespace Training {
 
             //Day1Examples();
             //Day2Examples();
-            //Day3Examples();
-
+            Day3Examples();
+            Console.ReadLine();
             //hacker rank diagonal difference
             //first argument is n
             int n = Convert.ToInt32(args[0].Trim());
@@ -39,6 +39,7 @@ namespace Training {
             int diff = 0, sum1 = 0, sum2 = 0;
             int n = arr.Count;
 
+            //get thhe sum of both diagonals
             for (int i = 0; i < n; i++) {
                 sum1 += arr[i][i];
                 sum2 += arr[i][n - 1 - i];
@@ -53,6 +54,8 @@ namespace Training {
             //structs are a value type
             public int id;
             public string name;
+            //reference types like lists and objects are still references in structs
+            //and can be changed just other like reference types
             private List<string> colors;
 
             //cannot have an explicit parameterless constructor
@@ -63,6 +66,7 @@ namespace Training {
                 this.colors = new List<string>();
             }
 
+            //structs can have methods just like classes
             public void AddColor(string color) {
                 colors.Add(color);
             }
@@ -72,6 +76,8 @@ namespace Training {
             }
         }
 
+        //value types in structs are not changed by methods because they are value types
+        //unlike objects where you are given a reference
         public static void MutateStruct(Day3Struct stru) {
             stru.id = 75;
             Console.WriteLine("In method {0}", stru.id);
@@ -95,6 +101,10 @@ namespace Training {
             Console.WriteLine(newStruct);
 
             //IEnumerable<> collections
+            //Many collections implement IEnumerable ontop of other interfaces
+            //this gives a user common methods to call
+            //in the case of IEnumerable this allows a user to iterate over the 
+            //elements in the collection
             List<int> myList = new List<int>();
             LinkedList<int> myLList = new LinkedList<int>();
             Dictionary<string, string> birthdays = new Dictionary<string, string>();
@@ -121,6 +131,7 @@ namespace Training {
             sBirthdays.Add("John Doe", "12/20");
             birthdays.Add("Adam Smith", "06/07");
             sBirthdays.Add("Adam Smith", "06/07");
+            //Dictionaries do not allow duplicate keys
             //birthdays.Add("Dan Pickles", "02/04");
             //sBirthdays.Add("Dan Pickles", "02/04");
 
@@ -129,6 +140,7 @@ namespace Training {
                 Console.WriteLine($"Key: {entry.Key}, Value: {entry.Value}");
             }
 
+            //sorted based on the key
             Console.WriteLine("sorted dictionary");
             foreach (var entry in sBirthdays) {
                 Console.WriteLine($"Key: {entry.Key}, Value: {entry.Value}");
@@ -139,17 +151,20 @@ namespace Training {
             line.Enqueue("Jane");
             line.Enqueue("Mike");
 
-            //while (line.Peek() != null) {
-            //    Console.WriteLine(line.Dequeue());
-            //}
-            for (int i = 0; i < 3; i++) {
+            //both loops do the same thing
+            while (line.Count > 0) {
                 Console.WriteLine(line.Dequeue());
             }
+            //for (int i = 0; i < 3; i++) {
+            //    Console.WriteLine(line.Dequeue());
+            //}
 
+            //custom linked list implementation
+            //adds items to the front of the list
             Day3<string> myLL = new Day3<string>();
             Day3<int> myLL2 = new Day3<int>();
             Day3<Day1> myLL3 = new Day3<Day1>();
-            //instanciate a nested class
+            //instantiate a nested class
             //Day3<int>.Node myNode = new Day3<int>.Node(3);
 
             myLL2.AddHead(1);
@@ -173,18 +188,22 @@ namespace Training {
             Console.WriteLine("The second element: {0}", myLL3.Get(1));
 
             //user input
-            //Console.Write("Enter a name: ");
-            //string input = Console.ReadLine();
-            //Console.WriteLine($"You entered: {input}");
+            //you would want to loop user input or check user input to try and filter out 
+            //bad input, so you don't get cases of users entering a string when you expect
+            //an int, or a double when you expect an int, etc.
+            Console.Write("Enter a name: ");
+            string input = Console.ReadLine();
+            Console.WriteLine($"You entered: {input}");
 
-            //Console.Write("Enter a number: ");
-            //try {
-            //    int numInput = Convert.ToInt32(Console.ReadLine());
-            //    Console.WriteLine($"You entered: {numInput}");
-            //} catch (Exception e) {
-            //    Console.WriteLine("Wrong input!");
-            //}
+            Console.Write("Enter a number: ");
+            try {
+                int numInput = Convert.ToInt32(Console.ReadLine());
+                Console.WriteLine($"You entered: {numInput}");
+            } catch (Exception e) {
+                Console.WriteLine("Wrong input!");
+            }
 
+            //file reading example
             Day3FileReader reader = new Day3FileReader();
             reader.ReadFile();
             reader.WriteLines();
@@ -195,15 +214,23 @@ namespace Training {
                 Console.WriteLine(entry);
             }
 
+            //singleton example. Not a threadsafe implementation
+            //the idea is to only ever have one instance of this class
             Console.WriteLine("Singleton: " + MySingleton.Instance.GetHashCode());
             Console.WriteLine("Singleton: " + MySingleton.Instance.GetHashCode());
             Console.WriteLine("Singleton: " + MySingleton.Instance.GetHashCode());
 
+            //reading from a config file that would have keys of some kind
             string myKey = ConfigurationManager.AppSettings.Get("MyKey");
             Console.WriteLine("The value of MyKey: {0}", myKey);
             string user = ConfigurationManager.AppSettings.Get("User");
             Console.WriteLine("The value of User: {0}", user);
 
+            //different uses of IComparable vs IComparer interfaces
+            //very similar but IComparable would be used to have an object compare
+            //itself to another object
+            //IComparer would be used to have a class who's purpose is to compare them
+            //Both can allow for sorting on special criteria
             List<Dog> dogList = new List<Dog>();
             dogList.Add(new Dog("Princess", "Orange", true));
             dogList.Add(new Dog("Bob", "Blue", true));
@@ -218,6 +245,10 @@ namespace Training {
             Console.WriteLine($"{string.Join(", ", dogList)}");
             Console.WriteLine($"{string.Join(", ", dogList2)}");
 
+            //Basic factory method. Takes in a user parameter to help
+            //decouple the implementation from the use
+            //a user just calls the factory to make an object for them instead
+            //of doing that setup themselves
             RemoteFactory factory = null;
             Console.Write("WHat type of controller do you want?: ");
             string request = Console.ReadLine();
