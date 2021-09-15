@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Training.Data {
-    public class Dog : Animal {
+    public class Dog : Animal, IComparable<Dog> {
         public bool Collar { get; set; }
 
         public Dog(string name, string color, bool collar) : base(name, color) {
@@ -30,6 +30,14 @@ namespace Training.Data {
 
         public string DogMethod() {
             return "I am only in dog";
+        }
+
+        public override string ToString() {
+            return $"[Dog: {Name}, {Color}, {Collar}]";
+        }
+
+        public int CompareTo(Dog other) {
+            return String.Compare(this.Name, other.Name);
         }
     }
 }

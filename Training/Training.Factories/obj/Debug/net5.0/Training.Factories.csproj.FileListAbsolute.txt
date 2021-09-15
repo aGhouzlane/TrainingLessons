@@ -1,0 +1,11 @@
+C:\Skillstorm\Net Lessons\Training\Training.Factories\bin\Debug\net5.0\Training.Factories.deps.json
+C:\Skillstorm\Net Lessons\Training\Training.Factories\bin\Debug\net5.0\Training.Factories.dll
+C:\Skillstorm\Net Lessons\Training\Training.Factories\bin\Debug\net5.0\ref\Training.Factories.dll
+C:\Skillstorm\Net Lessons\Training\Training.Factories\bin\Debug\net5.0\Training.Factories.pdb
+C:\Skillstorm\Net Lessons\Training\Training.Factories\obj\Debug\net5.0\Training.Factories.GeneratedMSBuildEditorConfig.editorconfig
+C:\Skillstorm\Net Lessons\Training\Training.Factories\obj\Debug\net5.0\Training.Factories.AssemblyInfoInputs.cache
+C:\Skillstorm\Net Lessons\Training\Training.Factories\obj\Debug\net5.0\Training.Factories.AssemblyInfo.cs
+C:\Skillstorm\Net Lessons\Training\Training.Factories\obj\Debug\net5.0\Training.Factories.csproj.CoreCompileInputs.cache
+C:\Skillstorm\Net Lessons\Training\Training.Factories\obj\Debug\net5.0\Training.Factories.dll
+C:\Skillstorm\Net Lessons\Training\Training.Factories\obj\Debug\net5.0\ref\Training.Factories.dll
+C:\Skillstorm\Net Lessons\Training\Training.Factories\obj\Debug\net5.0\Training.Factories.pdb

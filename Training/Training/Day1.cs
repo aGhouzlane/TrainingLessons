@@ -47,5 +47,9 @@ namespace Training {
             //return new LinkedList<int>();
             return new HashSet<int>();
         }
+
+        public override string ToString() {
+            return $"{Id}: {Name}";
+        }
     }
 }

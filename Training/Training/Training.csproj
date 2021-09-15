@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
@@ -6,7 +6,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="System.Configuration.ConfigurationManager" Version="5.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Training.Data\Training.Data.csproj" />
+    <ProjectReference Include="..\Training.Factories\Training.Factories.csproj" />
+    <ProjectReference Include="..\Training.Threading\Training.Threading.csproj" />
   </ItemGroup>
 
 </Project>

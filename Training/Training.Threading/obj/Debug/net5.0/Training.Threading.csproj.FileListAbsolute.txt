@@ -1,0 +1,12 @@
+C:\Skillstorm\Net Lessons\Training\Training.Threading\bin\Debug\net5.0\Training.Threading.deps.json
+C:\Skillstorm\Net Lessons\Training\Training.Threading\bin\Debug\net5.0\Training.Threading.dll
+C:\Skillstorm\Net Lessons\Training\Training.Threading\bin\Debug\net5.0\ref\Training.Threading.dll
+C:\Skillstorm\Net Lessons\Training\Training.Threading\bin\Debug\net5.0\Training.Threading.pdb
+C:\Skillstorm\Net Lessons\Training\Training.Threading\obj\Debug\net5.0\Training.Threading.csproj.AssemblyReference.cache
+C:\Skillstorm\Net Lessons\Training\Training.Threading\obj\Debug\net5.0\Training.Threading.GeneratedMSBuildEditorConfig.editorconfig
+C:\Skillstorm\Net Lessons\Training\Training.Threading\obj\Debug\net5.0\Training.Threading.AssemblyInfoInputs.cache
+C:\Skillstorm\Net Lessons\Training\Training.Threading\obj\Debug\net5.0\Training.Threading.AssemblyInfo.cs
+C:\Skillstorm\Net Lessons\Training\Training.Threading\obj\Debug\net5.0\Training.Threading.csproj.CoreCompileInputs.cache
+C:\Skillstorm\Net Lessons\Training\Training.Threading\obj\Debug\net5.0\Training.Threading.dll
+C:\Skillstorm\Net Lessons\Training\Training.Threading\obj\Debug\net5.0\ref\Training.Threading.dll
+C:\Skillstorm\Net Lessons\Training\Training.Threading\obj\Debug\net5.0\Training.Threading.pdb
