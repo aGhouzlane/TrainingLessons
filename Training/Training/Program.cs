@@ -43,10 +43,10 @@ namespace Training {
             Console.WriteLine("While loop 1");
             while (i < 3) {
                 Console.WriteLine(myArray[i]);
-                // i = i + 1 == i++;
-                // i = i - 1 == i--;
-                // i + 1 = i == ++i;
-                // i - 1 = i == --i:
+                // i++ increments then exaluates i, is shorthand for i = i + 1;
+                // i-- decrements then exaluates i, is shorthand for i = i - 1;
+                // ++i is the same as i++, but increments before evaluating i
+                // --i is the same as i--, but decrements before evaluating i
                 i++;
             }
 
