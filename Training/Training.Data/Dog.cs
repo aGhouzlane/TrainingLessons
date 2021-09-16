@@ -32,6 +32,10 @@ namespace Training.Data {
             return "I am only in dog";
         }
 
+        public void ThreadTest() {
+            Console.WriteLine($"I ran in a thread. Name: {this.Name}");
+        }
+
         public override string ToString() {
             return $"[Dog: {Name}, {Color}, {Collar}]";
         }

@@ -9,3 +9,4 @@ C:\Skillstorm\Net Lessons\Training\Training.Factories\obj\Debug\net5.0\Training.
 C:\Skillstorm\Net Lessons\Training\Training.Factories\obj\Debug\net5.0\Training.Factories.dll
 C:\Skillstorm\Net Lessons\Training\Training.Factories\obj\Debug\net5.0\ref\Training.Factories.dll
 C:\Skillstorm\Net Lessons\Training\Training.Factories\obj\Debug\net5.0\Training.Factories.pdb
+C:\Skillstorm\Net Lessons\Training\Training.Factories\obj\Debug\net5.0\Training.Factories.csproj.AssemblyReference.cache

@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
 using Training.Data;
 using Training.Factories;
 using Training.Threading;
@@ -18,21 +20,180 @@ namespace Training {
 
             //Day1Examples();
             //Day2Examples();
-            Day3Examples();
-            Console.ReadLine();
+            //Day3Examples();
+            //Day4Examples();
+
+            //stops the program from completing before Day4Examples is done
+            //Console.ReadLine();
+
+            //MoreDay4Examples();
+            //Day4ProducerConsumer();
+            //Day4WrongThreadsTest();
+
             //hacker rank diagonal difference
             //first argument is n
-            int n = Convert.ToInt32(args[0].Trim());
+            //int n = Convert.ToInt32(args[0].Trim());
 
-            List<List<int>> arr = new List<List<int>>();
+            //List<List<int>> arr = new List<List<int>>();
 
-            for (int i = 0; i < n; i++) {
-                arr.Add(args[i + 1].TrimEnd().Split(' ').ToList().Select(arrTemp => Convert.ToInt32(arrTemp)).ToList());
+            //for (int i = 0; i < n; i++) {
+            //    arr.Add(args[i + 1].TrimEnd().Split(' ').ToList().Select(arrTemp => Convert.ToInt32(arrTemp)).ToList());
+            //}
+
+            //int result = diagonalDifference(arr);
+
+            //Console.WriteLine(result);
+        }
+
+        public static void Day4WrongThreadsTest() {
+            //Console.WriteLine($"Singleton {MySingleton.Instance.GetHashCode()}");
+            //This just shows how MySingleton is not thread save whereas MySingleton2 is
+            List<Thread> testList = new List<Thread>();
+            for (int i = 0; i < 4; i++) {
+                Thread Temp = new Thread(() => {
+                    Console.WriteLine($"{Thread.CurrentThread.ManagedThreadId}: Singleton {MySingleton.Instance.GetHashCode()}");
+                });
+                testList.Add(Temp);
             }
 
-            int result = diagonalDifference(arr);
+            foreach (var t in testList) {
+                t.Start();
+            }
 
-            Console.WriteLine(result);
+            foreach (var th in testList) {
+                th.Join();
+            }
+        }
+
+        public static void Day4ProducerConsumer() {
+            //basic example, but could easily get more complex
+            Random rand = new Random();
+            ProducerConsumer pcExample = new ProducerConsumer();
+
+            Thread p1 = new Thread(() => {
+                int val = rand.Next(20, 51);
+
+                for (int i = 0; i < 5; i++) {
+                    pcExample.AddProduce(val);
+                    Thread.Sleep(3000);
+                }
+            });
+
+            Thread p2 = new Thread(() => {
+                int val = rand.Next(20, 51);
+
+                for (int i = 0; i < 5; i++) {
+                    pcExample.AddProduce(val);
+                    Thread.Sleep(3000);
+                }
+            });
+
+            Thread c1 = new Thread(() => {
+                int val = rand.Next(20, 51);
+
+                for (int i = 0; i < 5; i++) {
+                    pcExample.ConsumeProduce(val);
+                    Thread.Sleep(3000);
+                }
+            });
+
+            Thread c2 = new Thread(() => {
+                int val = rand.Next(20, 51);
+
+                for (int i = 0; i < 5; i++) {
+                    pcExample.ConsumeProduce(val);
+                    Thread.Sleep(3000);
+                }
+            });
+
+            p1.Start();
+            p2.Start();
+            c1.Start();
+            c2.Start();
+
+            p1.Join();
+            p2.Join();
+            c1.Join();
+            c2.Join();
+        }
+
+        public static void MoreDay4Examples() {
+            Console.WriteLine("\nThreading examples");
+
+            BankAccount act1 = new BankAccount(100);
+            BankAccount act2 = new BankAccount(100);
+            BankAccount act3 = new BankAccount(100);
+            Person p1 = new Person("Dan Pickles", act1);
+            Person p2 = new Person("John Doe", act2);
+            Person p3 = new Person("Jane Doe", act2);
+            Person p4 = new Person("Bob Ross", act3);
+            Random rand = new Random();
+            List<Thread> tasks = new List<Thread>();
+
+            Thread thread1 = new Thread(() => ManageAccount(p1, rand));
+            tasks.Add(thread1);
+            Thread thread2 = new Thread(() => ManageAccount(p2, rand));
+            tasks.Add(thread2);
+            Thread thread3 = new Thread(() => ManageAccount(p3, rand));
+            tasks.Add(thread3);
+
+            Dog dog = new Dog("Test", "Blue", true);
+
+            Thread thread4 = new Thread(dog.ThreadTest);
+            tasks.Add(thread4);
+            Thread thread5 = new Thread(new ThreadStart(dog.ThreadTest));
+            tasks.Add(thread5);
+
+            Thread thread6 = new Thread(() => {
+                for (int i = 0; i < 3; i++) {
+                    double val = rand.NextDouble() * (50.50 - 20.50) + 20.50;
+                    p4.Add(val);
+                    Thread.Sleep(3000);
+                    val = rand.NextDouble() * (50.50 - 20.50) + 20.50;
+                    p4.Withdraw(val);
+                }
+            });
+            tasks.Add(thread6);
+
+            foreach (Thread t in tasks) {
+                t.Start();
+            }
+
+            foreach (Thread th in tasks) {
+                th.Join();
+            }
+
+            Console.WriteLine("All threads finished");
+
+            Thread newThread = new Thread(() => { Thread.Sleep(1200000000); });
+
+            newThread.Start();
+            
+            newThread.Interrupt();
+            Console.WriteLine("Thread Interrupted");
+
+            newThread.Join();
+        }
+
+        private static void ManageAccount(Person p, Random rando) {
+            /* lambda expression
+             * () => { statements; }
+             * 
+             * void Method() {
+             *  statements;
+             * }
+             */
+            for (int i = 0; i < 3; i++) {
+                double val = rando.NextDouble() * (50.50 - 20.50) + 20.50;
+                p.Add(val);
+                Thread.Sleep(3000);
+                val = rando.NextDouble() * (50.50 - 20.50) + 20.50;
+                p.Withdraw(val);
+            }
+        }
+
+        public static async Task Day4Examples() {
+            await BreakfastAsync.MakeBreakfast();
         }
 
         public static int diagonalDifference(List<List<int>> arr) {
@@ -266,7 +427,7 @@ namespace Training {
 
             Remote remote = factory.GetRemote();
             Console.WriteLine("Remote information: ");
-            Console.WriteLine($"Remote type: {remote.RemoteType}, Wired: {remote.Wired}, Batteries: {remote.Batteries}, Company: {remote.Company}");
+            Console.WriteLine($"Remote type: {remote.RemoteType}, Wired: {remote.Wire}, Batteries: {remote.Batteries}, Company: {remote.Company}");
         }
 
         public static void Day2Examples() {

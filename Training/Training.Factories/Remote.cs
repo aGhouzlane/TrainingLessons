@@ -8,7 +8,7 @@ namespace Training.Factories {
     public abstract class Remote {
         public abstract string RemoteType { get; }
         public abstract string Company { get; set; }
-        public bool Wired { get; set; }
-        public bool Batteries { get; set; }
+        public Wire Wire { get; set; }
+        public Batteries Batteries { get; set; }
     }
 }

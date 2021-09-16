@@ -12,8 +12,8 @@ namespace Training.Factories {
         public XboxRemote(bool wired, bool batteries, string company) {
             _remoteType = "Xbox";
             _company = company;
-            this.Wired = wired;
-            this.Batteries = batteries;
+            this.Wire = wired ? new XBWire() : null;
+            this.Batteries = batteries ? new XBbatteries() : null;
         }
 
         public override string RemoteType {
