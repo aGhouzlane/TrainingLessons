@@ -1,0 +1,12 @@
+C:\Skillstorm\Net Lessons\Training\Training.Data\bin\Release\net5.0\Training.Data.deps.json
+C:\Skillstorm\Net Lessons\Training\Training.Data\bin\Release\net5.0\Training.Data.dll
+C:\Skillstorm\Net Lessons\Training\Training.Data\bin\Release\net5.0\ref\Training.Data.dll
+C:\Skillstorm\Net Lessons\Training\Training.Data\bin\Release\net5.0\Training.Data.pdb
+C:\Skillstorm\Net Lessons\Training\Training.Data\obj\Release\net5.0\Training.Data.csproj.AssemblyReference.cache
+C:\Skillstorm\Net Lessons\Training\Training.Data\obj\Release\net5.0\Training.Data.GeneratedMSBuildEditorConfig.editorconfig
+C:\Skillstorm\Net Lessons\Training\Training.Data\obj\Release\net5.0\Training.Data.AssemblyInfoInputs.cache
+C:\Skillstorm\Net Lessons\Training\Training.Data\obj\Release\net5.0\Training.Data.AssemblyInfo.cs
+C:\Skillstorm\Net Lessons\Training\Training.Data\obj\Release\net5.0\Training.Data.csproj.CoreCompileInputs.cache
+C:\Skillstorm\Net Lessons\Training\Training.Data\obj\Release\net5.0\Training.Data.dll
+C:\Skillstorm\Net Lessons\Training\Training.Data\obj\Release\net5.0\ref\Training.Data.dll
+C:\Skillstorm\Net Lessons\Training\Training.Data\obj\Release\net5.0\Training.Data.pdb

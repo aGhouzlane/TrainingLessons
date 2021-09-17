@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>Training.Factories</id>
+    <version>1.0.0</version>
+    <authors>Training.Factories</authors>
+    <description>Package Description</description>
+    <dependencies>
+      <group targetFramework="net5.0" />
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="C:\Skillstorm\Net Lessons\Training\Training.Factories\bin\Debug\net5.0\Training.Factories.dll" target="lib\net5.0\Training.Factories.dll" />
+  </files>
+</package>

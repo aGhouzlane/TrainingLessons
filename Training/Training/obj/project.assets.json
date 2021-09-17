@@ -148,7 +148,7 @@
           }
         }
       },
-      "Training.Data/1.0.0": {
+      "Training.Data/2.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v5.0",
         "compile": {
@@ -495,7 +495,7 @@
         "version.txt"
       ]
     },
-    "Training.Data/1.0.0": {
+    "Training.Data/2.0.0": {
       "type": "project",
       "path": "../Training.Data/Training.Data.csproj",
       "msbuildProject": "../Training.Data/Training.Data.csproj"
@@ -514,7 +514,7 @@
   "projectFileDependencyGroups": {
     "net5.0": [
       "System.Configuration.ConfigurationManager >= 5.0.0",
-      "Training.Data >= 1.0.0",
+      "Training.Data >= 2.0.0",
       "Training.Factories >= 1.0.0",
       "Training.Threading >= 1.0.0"
     ]
