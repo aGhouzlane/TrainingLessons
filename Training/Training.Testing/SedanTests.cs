@@ -36,6 +36,7 @@ namespace Training.Testing {
             //multiple asserts can be used, but may not be useful
             Assert.IsTrue(3 > 1);
             Assert.IsTrue(4 < 5);
+            Assert.IsTrue(0 > 5);
         }
 
         [Test]
