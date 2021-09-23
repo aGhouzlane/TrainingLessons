@@ -73,7 +73,7 @@ select * from dbo.Foods;
 
 rollback tran T2;
 
-/* ANother way to change the setting for just the query instead of in general */
+/* Another way to change the setting for just the query instead of in general */
 SET IMPLICIT_TRANSACTIONS ON;
 Begin Tran; /* Can name transactions or just leave without a name */
 Update dbo.Trainees set FavoriteFood = 5 where Id = 1;
@@ -184,3 +184,153 @@ select * from dbo.Trainees where Id >= 4;
 select * from dbo.Trainees
 except
 select * from dbo.Trainees where Id > 4;
+
+/* Queries follow ACID transactions, Atomicity, Consisitency, Isolation, and Durability */
+select * from dbo.Trainees;
+update dbo.Trainees set FavoriteFood = 7 where Id = 7;
+
+/* Count(*) does not skip null values */
+/* Count(column name) does skip null values */
+select COUNT(*) as 'Number of Trainees' from dbo.Trainees;
+select * from dbo.Trainees;
+
+/* Aggregate functions return scalars and will ignore null values */
+select AVG(FavoriteFood) from dbo.Trainees;
+select MAX(FavoriteFood) from dbo.Trainees;
+select MIN(FavoriteFood) from dbo.Trainees;
+select SUM(FavoriteFood) from dbo.Trainees;
+
+/* can use aggregate functions on the results of queries */
+select SUM([Food Id]) from (
+	select 
+		T.Id as 'Trainee Id', 
+		T.[Name] as 'Trainee Name', 
+		FavoriteFood as 'Food Id', 
+		F.[Name] as 'Favorite Food', 
+		Make, 
+		Model, 
+		[Year]
+	from dbo.Trainees as T
+	join dbo.Foods as F on T.FavoriteFood = F.Id 
+	Join dbo.Vehicles as V on T.Id = V.[Owner]
+	) as qInner
+where [Trainee Id] > 4;
+
+/* can use concat to combine multiple columns inot a single string */
+select 
+	T.Id as 'Trainee Id', 
+	T.[Name] as 'Trainee Name', 
+	FavoriteFood as 'Food Id', 
+	F.[Name] as 'Favorite Food', 
+	CONCAT([Year], ' ', Make, ' ', Model) as 'Vehicle'
+from dbo.Trainees as T
+join dbo.Foods as F on T.FavoriteFood = F.Id 
+Join dbo.Vehicles as V on T.Id = V.[Owner];
+
+/* must include everything in the columns selected in group by statement */
+/* can only use group by with aggregate functions to control how datat is aggregated */
+select 
+	F.[Name] as 'Favorite Food',
+	Count(T.Id)
+from dbo.Trainees as T
+join dbo.Foods as F on T.FavoriteFood = F.Id
+Group By F.[Name];
+
+/* Order By is used to control the order that data is returned */
+select 
+	F.[Name] as 'Favorite Food',
+	Count(T.Id)
+from dbo.Trainees as T
+join dbo.Foods as F on T.FavoriteFood = F.Id
+Group By F.[Name]
+Order By F.[Name] ASC;
+
+select 
+	T.Id as 'Trainee Id', 
+	T.[Name] as 'Trainee Name', 
+	FavoriteFood as 'Food Id', 
+	F.[Name] as 'Favorite Food'
+from dbo.Trainees as T
+join dbo.Foods as F on T.FavoriteFood = F.Id
+Order By [Food Id] ASC;
+
+/* Having only works with aggregate functions and serves the purpose of a where clause */
+select 
+	F.[Name] as 'Favorite Food',
+	Count(T.Id) as 'Count'
+from dbo.Trainees as T
+join dbo.Foods as F on T.FavoriteFood = F.Id
+Group By F.[Name]
+Having COUNT(T.[Id]) > 1
+Order By F.[Name] ASC;
+
+/* two different queries above only gets entries with a count above 1, this gets the count for only employees 
+with an Id greater than 4 */
+select 
+	F.[Name] as 'Favorite Food',
+	Count(T.Id)
+from dbo.Trainees as T
+join dbo.Foods as F on T.FavoriteFood = F.Id
+where T.Id > 4
+Group By F.[Name]
+Order By F.[Name] ASC;
+
+/* LEN function returns the length of a string */
+select T.[Name], LEN(T.[Name]) as 'Number of Characters' from dbo.Trainees as T;
+
+/* Removes leading and trailing white space */
+select TRIM('               string        string        ');
+
+/* Numeric and Decimal mean the same thing 
+Defined as Decimal(precision, scale) precision is the number of digits, scale is the number of digits after the 
+decimal place */
+
+-- decimal and numeric will add trailing zeroes and hold up to whataver amount of total digits
+-- they will not add leading 0's
+CREATE TABLE dbo.MyTable  
+(  
+	Id int Primary Key Not Null,
+	MyDecimalColumn DECIMAL(5,2),
+	MyNumericColumn NUMERIC(10,5)
+);  
+  
+GO  
+INSERT INTO dbo.MyTable VALUES (1, 123, 12345.12);  
+INSERT INTO dbo.MyTable VALUES (2, 12, 145.12);  
+INSERT INTO dbo.MyTable VALUES (3, 123.4, 125.13332);  
+GO  
+SELECT MyDecimalColumn, MyNumericColumn  
+FROM dbo.MyTable;
+
+Select POWER(3, 5);
+
+/* Round rounds up or down to however many decimal places are specified, does not remove trailing zeroes 
+Round does not change the data type.
+Ceiling and floor change the data type to an integer
+Ceiling gets the neirest int above the value, floor gets the nearest int below a value*/
+Select ROUND(125.13532, 2);
+
+Select CEILING(125.13532) as 'Ceiling';
+select FLOOR(125.13532) as 'Floor';
+
+-- same as GETDATE but for UTC
+select GETUTCDATE();
+
+/* In lets you specify multiple values for a where clause */
+select * from dbo.Trainees where Id = 1 Or Id = 5 Or Id = 6;
+select * from dbo.Trainees where Id In (1, 5, 6);
+select * from dbo.Trainees where Id In
+(select 
+	T.Id
+from dbo.Trainees as T
+Join dbo.Vehicles as V on T.Id = V.[Owner]
+);
+
+/* Checks if the query evaluates to true or false and then returns data based on that */
+select T2.Id, T2.Name from dbo.Trainees as T2 where exists
+(select 
+	T.Id
+from dbo.Trainees as T
+Join dbo.Vehicles as V on T.Id = V.[Owner] and T.Id = T2.Id);
+
+/* Changeed in VS */
